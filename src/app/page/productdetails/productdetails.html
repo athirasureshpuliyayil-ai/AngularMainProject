@@ -1,0 +1,176 @@
+<!-- ===== LOADING ===== -->
+@if (loading) {
+  <div class="beauty-spinner" style="min-height: 60vh;">
+    <div class="spinner-ring"></div>
+    <p>Loading product details…</p>
+  </div>
+}
+
+<!-- ===== PRODUCT DETAIL ===== -->
+@if (!loading && product) {
+  <div class="detail-page">
+
+    <!-- Back Button -->
+    <div class="back-row">
+      <a routerLink="/products" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Products
+      </a>
+    </div>
+
+    <!-- Main Card -->
+    <div class="detail-card glass-card">
+
+      <!-- LEFT: Images -->
+      <div class="detail-images">
+        <div class="main-image-wrap">
+          <img [src]="activeImage" [alt]="product.title" class="main-image" />
+          @if (product.discountPercentage > 0) {
+            <div class="detail-discount-badge">
+              -{{ product.discountPercentage | number:'1.0-0' }}% OFF
+            </div>
+          }
+        </div>
+
+        <!-- Thumbnails -->
+        @if (product.images && product.images.length > 1) {
+          <div class="thumb-strip">
+            @for (img of product.images; track img) {
+              <button
+                class="thumb-btn"
+                [class.active]="activeImage === img"
+                (click)="selectImage(img)">
+                <img [src]="img" [alt]="product.title" />
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- RIGHT: Info -->
+      <div class="detail-info">
+
+        <!-- Brand + Category -->
+        <div class="detail-meta-row">
+          <span class="detail-brand">{{ product.brand }}</span>
+          <span class="detail-category">{{ product.category }}</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="detail-title">{{ product.title }}</h1>
+
+        <!-- Rating -->
+        <div class="detail-rating">
+          <span class="stars">
+            @for (s of stars; track $index) { <i class="fa-solid fa-star"></i> }
+            @for (s of emptyStars; track $index) { <i class="fa-regular fa-star"></i> }
+          </span>
+          <span class="rating-num">{{ product.rating | number:'1.1-1' }}</span>
+          <span class="rating-sep">·</span>
+          <span class="stock-text">{{ product.stock }} in stock</span>
+        </div>
+
+        <!-- Price -->
+        <div class="detail-price-row">
+          <span class="detail-price">${{ discountedPrice | number:'1.2-2' }}</span>
+          @if (product.discountPercentage > 0) {
+            <span class="detail-original">${{ product.price | number:'1.2-2' }}</span>
+          }
+        </div>
+
+        <!-- Availability -->
+        <div class="availability-row">
+          <div class="avail-badge" [class.instock]="product.availabilityStatus === 'In Stock'">
+            <i class="fa-solid" [class.fa-circle-check]="product.availabilityStatus === 'In Stock'"
+               [class.fa-circle-xmark]="product.availabilityStatus !== 'In Stock'"></i>
+            {{ product.availabilityStatus }}
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="detail-desc">{{ product.description }}</p>
+
+        <!-- Tags -->
+        @if (product.tags && product.tags.length) {
+          <div class="detail-tags">
+            @for (tag of product.tags; track tag) {
+              <span class="tag-chip">{{ tag }}</span>
+            }
+          </div>
+        }
+
+        <!-- Info Pills -->
+        <div class="detail-pills">
+          <div class="pill">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>{{ product.warrantyInformation }}</span>
+          </div>
+          <div class="pill">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>{{ product.shippingInformation }}</span>
+          </div>
+          <div class="pill">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>{{ product.returnPolicy }}</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="detail-actions">
+          <button class="btn-beauty" (click)="addToCart()" [class.added]="addedToCart">
+            @if (addedToCart) {
+              <i class="fa-solid fa-check"></i> Added to Cart!
+            } @else {
+              <i class="fa-solid fa-bag-shopping"></i> Add to Cart
+            }
+          </button>
+          <a routerLink="/products" class="btn-beauty-outline">
+            Continue Shopping
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    @if (product.reviews && product.reviews.length) {
+      <div class="reviews-section">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        <div class="reviews-grid">
+          @for (review of product.reviews; track review.reviewerName) {
+            <div class="review-card glass-card">
+              <div class="review-header">
+                <div class="reviewer-avatar">{{ review.reviewerName[0] }}</div>
+                <div>
+                  <strong class="reviewer-name">{{ review.reviewerName }}</strong>
+                  <div class="review-stars">
+                    @for (s of [1,2,3,4,5]; track s) {
+                      <i class="fa-star" [class.fa-solid]="s <= review.rating" [class.fa-regular]="s > review.rating"></i>
+                    }
+                  </div>
+                </div>
+              </div>
+              <p class="review-comment">{{ review.comment }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+  </div>
+}
+
+<!-- ===== NOT FOUND ===== -->
+@if (!loading && !product) {
+  <div class="empty-state">
+    <i class="fa-regular fa-face-sad-tear"></i>
+    <h3>Product not found</h3>
+    <p>The product you're looking for doesn't exist.</p>
+    <a routerLink="/products" class="btn-beauty">Browse Products</a>
+  </div>
+}
+
+<!-- Footer -->
+<footer class="bb-footer">
+  <div class="footer-logo">Beauty Bliss</div>
+  <p class="footer-copy">© 2026 Beauty Bliss. All rights reserved.</p>
+</footer>

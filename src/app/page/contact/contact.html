@@ -1,0 +1,151 @@
+<!-- ===== HERO ===== -->
+<div class="contact-hero">
+  <div class="contact-hero-content">
+    <span class="hero-badge">💌 Get in Touch</span>
+    <h1 class="contact-hero-title">Contact Us</h1>
+    <p class="contact-hero-sub">We'd love to hear from you. Our beauty experts are here to help!</p>
+  </div>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<section class="page-section contact-section">
+  <div class="contact-container">
+
+    <div class="contact-grid">
+
+      <!-- INFO PANEL -->
+      <div class="contact-info glass-card">
+        <h2>We're Here For You</h2>
+        <p class="info-desc">
+          Whether you need personalized skincare advice, have a question about an order, or just want to say hello — our team is ready to assist you.
+        </p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-text">
+              <strong>Visit Us</strong>
+              <span>123 Beauty Avenue, New York, NY 10001</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="info-text">
+              <strong>Email Us</strong>
+              <span>hello&#64;beautybliss.com</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="info-text">
+              <strong>Call Us</strong>
+              <span>+1 (800) 123-4567</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+            <div class="info-text">
+              <strong>Working Hours</strong>
+              <span>Mon - Fri: 9:00 AM - 8:00 PM (EST)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+      </div>
+
+      <!-- FORM PANEL -->
+      <div class="contact-form-wrap glass-card">
+        <h2>Send a Message ✨</h2>
+
+        @if (submitted) {
+          <div class="success-message">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully. Our beauty experts will get back to you within 24 hours.</p>
+          </div>
+        } @else {
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
+
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                [(ngModel)]="contactData.name"
+                required
+                #nameCtrl="ngModel"
+                [class.invalid]="nameCtrl.invalid && nameCtrl.touched"
+                placeholder="Jane Doe"
+              />
+              @if (nameCtrl.invalid && nameCtrl.touched) {
+                <span class="error-msg">Name is required</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="contactData.email"
+                required
+                email
+                #emailCtrl="ngModel"
+                [class.invalid]="emailCtrl.invalid && emailCtrl.touched"
+                placeholder="jane@example.com"
+              />
+              @if (emailCtrl.invalid && emailCtrl.touched) {
+                <span class="error-msg">Please enter a valid email</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                [(ngModel)]="contactData.message"
+                required
+                #msgCtrl="ngModel"
+                [class.invalid]="msgCtrl.invalid && msgCtrl.touched"
+                placeholder="How can we help you glow today?"
+              ></textarea>
+              @if (msgCtrl.invalid && msgCtrl.touched) {
+                <span class="error-msg">Message cannot be empty</span>
+              }
+            </div>
+
+            <button type="submit" class="submit-btn" [disabled]="contactForm.invalid || isSubmitting">
+              @if (isSubmitting) {
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Sending...
+              } @else {
+                Send Message <i class="fa-solid fa-paper-plane"></i>
+              }
+            </button>
+
+          </form>
+        }
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bb-footer">
+  <div class="footer-logo">Beauty Bliss</div>
+  <p class="footer-tagline">Where Luxury Meets Beauty ✨</p>
+  <p class="footer-copy">© 2026 Beauty Bliss. All rights reserved.</p>
+</footer>

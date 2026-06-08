@@ -1,0 +1,54 @@
+<nav class="bb-navbar" [class.scrolled]="scrolled">
+  <div class="nav-container">
+
+    <!-- Logo -->
+    <a routerLink="/home" class="nav-logo" (click)="closeMenu()">
+      <div class="logo-icon">
+        <i class="fa-solid fa-spa"></i>
+      </div>
+      <span class="logo-text">Beauty <span class="logo-accent">Bliss</span></span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li>
+        <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/products" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-star"></i> Products
+        </a>
+      </li>
+      <li>
+        <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-heart"></i> About
+        </a>
+      </li>
+      <li>
+        <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">
+          <i class="fa-solid fa-envelope"></i> Contact
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <a routerLink="/products" class="nav-shop-btn">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Shop Now</span>
+      </a>
+      <!-- Hamburger -->
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Mobile backdrop -->
+<div class="nav-backdrop" [class.visible]="menuOpen" (click)="closeMenu()"></div>

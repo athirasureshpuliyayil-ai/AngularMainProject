@@ -1,0 +1,15 @@
+<div class="faq-list">
+  @for (faq of faqs; track faq.question; let i = $index) {
+    <div class="faq-item" [class.open]="faq.open">
+      <button class="faq-question" (click)="toggleFaq(i)" [attr.aria-expanded]="faq.open">
+        <span>{{ faq.question }}</span>
+        <div class="faq-icon">
+          <i class="fa-solid" [class.fa-plus]="!faq.open" [class.fa-minus]="faq.open"></i>
+        </div>
+      </button>
+      <div class="faq-answer" [class.visible]="faq.open">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  }
+</div>

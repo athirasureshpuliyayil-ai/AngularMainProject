@@ -1,0 +1,94 @@
+/* =====================================================
+   FAQ Accordion — Beauty Bliss
+   ===================================================== */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item.open {
+  border-color: rgba(214, 51, 132, 0.4);
+  box-shadow: 0 4px 20px rgba(214, 51, 132, 0.12);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #f8f0ff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.25s;
+}
+
+.faq-question:hover {
+  color: #f0609e;
+}
+
+.faq-item.open .faq-question {
+  color: #f0609e;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(214, 51, 132, 0.12);
+  border: 1px solid rgba(214, 51, 132, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d63384;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.faq-item.open .faq-icon {
+  background: linear-gradient(135deg, #d63384, #6f42c1);
+  border-color: transparent;
+  color: white;
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-answer.visible {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.faq-answer p {
+  padding: 0 24px 22px;
+  color: rgba(201, 184, 216, 0.9);
+  font-size: 0.93rem;
+  line-height: 1.75;
+  margin: 0;
+}

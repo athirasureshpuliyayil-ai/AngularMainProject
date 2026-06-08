@@ -1,0 +1,111 @@
+<!-- ===== HERO CAROUSEL ===== -->
+<app-carousel></app-carousel>
+
+<!-- ===== FEATURED PRODUCTS ===== -->
+<section class="page-section featured-section">
+  <div class="container-xl">
+    <h2 class="section-title">✨ Featured Products</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">Handpicked bestsellers loved by thousands of beauty enthusiasts</p>
+
+    @if (loading) {
+      <div class="beauty-spinner">
+        <div class="spinner-ring"></div>
+        <p>Loading beautiful products…</p>
+      </div>
+    } @else {
+      <div class="products-grid">
+        @for (product of featuredProducts; track product.id) {
+          <app-cards [product]="product"></app-cards>
+        }
+      </div>
+      <div class="view-all-wrap">
+        <a routerLink="/products" class="btn-beauty">
+          View All Products <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="page-section-alt why-section">
+  <div class="container-xl">
+    <h2 class="section-title">Why Choose Beauty Bliss?</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">We go beyond products — we deliver a premium beauty experience</p>
+
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card glass-card">
+          <div class="feature-icon">
+            <i [class]="feature.icon"></i>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-desc">{{ feature.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="page-section testimonials-section">
+  <div class="container-xl">
+    <h2 class="section-title">💬 What Our Customers Say</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">Real stories from real beauty lovers</p>
+
+    <div class="testimonials-grid">
+      @for (t of testimonials; track t.name) {
+        <div class="testimonial-card glass-card">
+          <div class="testimonial-stars">
+            @for (s of stars5; track s) {
+              <i class="fa-solid fa-star"></i>
+            }
+          </div>
+          <p class="testimonial-text">"{{ t.text }}"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">{{ t.avatar }}</div>
+            <div class="author-info">
+              <strong>{{ t.name }}</strong>
+              <span>{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="page-section-alt faq-section">
+  <div class="container-xl">
+    <h2 class="section-title">❓ Frequently Asked Questions</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">Everything you need to know about shopping with us</p>
+    <app-accordion></app-accordion>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bb-footer">
+  <div class="footer-logo">Beauty Bliss</div>
+  <p class="footer-tagline">Where Luxury Meets Beauty ✨</p>
+
+  <div class="footer-links">
+    <a routerLink="/home">Home</a>
+    <a routerLink="/products">Products</a>
+    <a routerLink="/about">About</a>
+    <a routerLink="/contact">Contact</a>
+  </div>
+
+  <div class="footer-socials">
+    <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" class="social-icon" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+    <a href="#" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+  </div>
+
+  <p class="footer-copy">© 2026 Beauty Bliss. All rights reserved. Made with ❤️ for beauty lovers.</p>
+</footer>

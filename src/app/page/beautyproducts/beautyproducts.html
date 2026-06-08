@@ -1,0 +1,92 @@
+<!-- ===== PAGE HEADER ===== -->
+<div class="products-hero">
+  <div class="products-hero-content">
+    <span class="hero-badge">🌟 Beauty Collection</span>
+    <h1 class="products-hero-title">Our Products</h1>
+    <p class="products-hero-sub">Discover authentic beauty from the world's best brands</p>
+  </div>
+</div>
+
+<!-- ===== FILTER BAR ===== -->
+<section class="filter-section">
+  <div class="container-xl">
+    <div class="filter-bar glass-card">
+
+      <!-- Search -->
+      <div class="filter-group">
+        <label class="filter-label">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </label>
+        <input
+          id="search-products"
+          type="text"
+          class="filter-input"
+          placeholder="Search beauty products..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="filterProducts()"
+        />
+      </div>
+
+      <!-- Price Range -->
+      <div class="filter-group">
+        <label class="filter-label">
+          <i class="fa-solid fa-tag"></i> Max Price: <strong>${{ maxPrice }}</strong>
+        </label>
+        <input
+          id="price-filter"
+          type="range"
+          class="price-range"
+          [min]="0"
+          [max]="100"
+          [(ngModel)]="maxPrice"
+          (ngModelChange)="filterProducts()"
+        />
+      </div>
+
+      <!-- Results count + Clear -->
+      <div class="filter-group filter-meta">
+        <span class="results-count">
+          {{ filteredProducts.length }} product{{ filteredProducts.length !== 1 ? 's' : '' }} found
+        </span>
+        <button class="clear-btn" (click)="clearFilters()">
+          <i class="fa-solid fa-xmark"></i> Clear
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS GRID ===== -->
+<section class="products-grid-section">
+  <div class="container-xl">
+
+    @if (loading) {
+      <div class="beauty-spinner">
+        <div class="spinner-ring"></div>
+        <p>Loading products…</p>
+      </div>
+    } @else if (filteredProducts.length === 0) {
+      <div class="empty-state">
+        <i class="fa-regular fa-face-sad-tear"></i>
+        <h3>No products found</h3>
+        <p>Try adjusting your search or price filter.</p>
+        <button class="btn-beauty" (click)="clearFilters()">Reset Filters</button>
+      </div>
+    } @else {
+      <div class="p-grid">
+        @for (item of filteredProducts; track item.id) {
+          <app-cards [product]="item"></app-cards>
+        }
+      </div>
+    }
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bb-footer">
+  <div class="footer-logo">Beauty Bliss</div>
+  <p class="footer-tagline">Where Luxury Meets Beauty ✨</p>
+  <p class="footer-copy">© 2026 Beauty Bliss. All rights reserved.</p>
+</footer>

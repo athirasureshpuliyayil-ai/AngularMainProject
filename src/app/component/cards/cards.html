@@ -1,0 +1,46 @@
+<div class="product-card" [routerLink]="['/products', product.id]">
+
+  <!-- Discount Badge -->
+  @if (product.discountPercentage > 0) {
+    <div class="discount-badge">-{{ product.discountPercentage | number:'1.0-0' }}%</div>
+  }
+
+  <!-- Thumbnail -->
+  <div class="card-image-wrap">
+    <img [src]="product.thumbnail" [alt]="product.title" class="card-img" loading="lazy">
+    <div class="card-overlay">
+      <span class="view-btn">
+        <i class="fa-solid fa-eye"></i> View Details
+      </span>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="card-body">
+    <span class="card-brand">{{ product.brand }}</span>
+
+    <h3 class="card-title">{{ product.title }}</h3>
+
+    <!-- Stars + Rating -->
+    <div class="card-rating">
+      <span class="stars">
+        @for (s of stars; track $index) {
+          <i class="fa-solid fa-star"></i>
+        }
+        @for (s of emptyStars; track $index) {
+          <i class="fa-regular fa-star"></i>
+        }
+      </span>
+      <span class="rating-value">{{ product.rating | number:'1.1-1' }}</span>
+    </div>
+
+    <!-- Price + Stock -->
+    <div class="card-footer-row">
+      <span class="card-price">${{ product.price | number:'1.2-2' }}</span>
+      <span class="card-stock" [class.instock]="product.availabilityStatus === 'In Stock'">
+        {{ product.availabilityStatus }}
+      </span>
+    </div>
+  </div>
+
+</div>

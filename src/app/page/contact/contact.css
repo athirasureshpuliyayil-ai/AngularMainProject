@@ -1,0 +1,278 @@
+/* =====================================================
+   Contact Page — Beauty Bliss
+   ===================================================== */
+.contact-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- Hero ---- */
+.contact-hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background: var(--bg-dark);
+}
+
+.contact-hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(214, 51, 132, 0.15);
+  border: 1px solid rgba(214, 51, 132, 0.3);
+  border-radius: 50px;
+  color: #f0609e;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.contact-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.contact-hero-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* ---- Content Grid ---- */
+.contact-section {
+  background: var(--bg-section);
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+}
+
+/* ---- Info Panel ---- */
+.contact-info {
+  padding: 40px;
+}
+
+.contact-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.info-desc {
+  color: rgba(248, 240, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(214, 51, 132, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f0609e;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-text strong {
+  color: #f8f0ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.info-text span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9b8d8;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* ---- Form Panel ---- */
+.contact-form-wrap {
+  padding: 40px;
+}
+
+.contact-form-wrap h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: rgba(248, 240, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #f8f0ff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(201, 184, 216, 0.3);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(214, 51, 132, 0.5);
+  box-shadow: 0 0 0 4px rgba(214, 51, 132, 0.1);
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+  border-color: rgba(239, 68, 68, 0.6);
+}
+
+.error-msg {
+  color: #f87171;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 51, 132, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success Message */
+.success-message {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.success-message i {
+  font-size: 3.5rem;
+  color: #4ade80;
+  margin-bottom: 20px;
+}
+
+.success-message h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.success-message p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info,
+  .contact-form-wrap {
+    padding: 32px 24px;
+  }
+}

@@ -1,0 +1,207 @@
+/* =====================================================
+   Products Page — Beauty Bliss
+   ===================================================== */
+.container-xl {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- Hero ---- */
+.products-hero {
+  background: linear-gradient(135deg, #1a0a2e 0%, #2d1455 50%, #1a0a2e 100%);
+  padding: 80px 20px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.products-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(214, 51, 132, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 70% 50%, rgba(111, 66, 193, 0.12) 0%, transparent 60%);
+}
+
+.products-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 20px;
+  background: rgba(214, 51, 132, 0.2);
+  border: 1px solid rgba(214, 51, 132, 0.4);
+  border-radius: 50px;
+  color: #ffc0d9;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.products-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.products-hero-sub {
+  color: rgba(248, 240, 255, 0.7);
+  font-size: 1.05rem;
+}
+
+/* ---- Filter Bar ---- */
+.filter-section {
+  padding: 28px 20px;
+  background: var(--bg-dark);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 24px 28px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+  flex: 1;
+}
+
+.filter-group.filter-meta {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 160px;
+  flex: 0.5;
+}
+
+.filter-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: #f8f0ff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.filter-input::placeholder {
+  color: rgba(201, 184, 216, 0.4);
+}
+
+.filter-input:focus {
+  border-color: rgba(214, 51, 132, 0.5);
+  box-shadow: 0 0 0 3px rgba(214, 51, 132, 0.1);
+}
+
+/* ---- Price Range ---- */
+.price-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #d63384 0%, #6f42c1 100%);
+  outline: none;
+  cursor: pointer;
+}
+
+.price-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d63384;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(214, 51, 132, 0.5);
+}
+
+/* ---- Results / Clear ---- */
+.results-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: rgba(214, 51, 132, 0.1);
+  border: 1px solid rgba(214, 51, 132, 0.25);
+  border-radius: 50px;
+  color: #f0609e;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.clear-btn:hover {
+  background: rgba(214, 51, 132, 0.2);
+}
+
+/* ---- Products Grid ---- */
+.products-grid-section {
+  padding: 48px 20px 80px;
+  background: var(--bg-dark);
+}
+
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ---- Empty State ---- */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #f8f0ff;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .filter-group { min-width: 100%; }
+  .p-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
